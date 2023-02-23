@@ -1,39 +1,41 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import '../styles/top.css';
 ---
 
 <Layout>
   <div class="container">
     <main>
-      <h2>Welcome!</h2>
-      <p>Your astro-notion-blog deployed successfully!</p>
-      <p>Have fun!</p>
+      <div class="mv">
+        <div class="mv_chara"></div>
+      </div>
+
+      <h2 class="content_title content_title-info">LINK</h2>
+      <div class="sec_profile">
+        <ul class="profile_list">
+          <li>
+            <a class="profile_list_item twitter" href='https://twitter.com/bankas_web' target="_blank">
+              <p class="text">Twitter</p>
+            </a>
+          </li>
+          <li>
+            <a class="profile_list_item blogwp" href='https://sakuttobankas.com/' target="_blank">
+              <p class="text">BLOG</p>
+            </a>
+          </li>
+          <li>
+            <a class="profile_list_item webwp" href='https://web.sakuttobankas.com/' target="_blank" >
+              <p class="text">WEB</p>
+            </a>
+          </li>
+          <li>
+            <a class="profile_list_item github" href='https://github.com/bankasss' target="_blank" >
+              <p class="text">GitHub</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
     </main>
   </div>
 </Layout>
-
-<style>
-  .container {
-    width: 640px;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-
-  .container > main {
-    margin-bottom: 40px;
-  }
-  .container div:last-child {
-    margin-bottom: 0;
-  }
-
-  .container h2 {
-    margin: 0 0 14px;
-    font-size: 1.4rem;
-    font-weight: 400;
-  }
-
-  .container p {
-    margin: 0.3rem auto;
-    line-height: 2rem;
-  }
-</style>
