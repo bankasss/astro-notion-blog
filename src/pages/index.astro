@@ -19,8 +19,6 @@ import PostTags from '../components/PostTags.astro'
 import PostTitle from '../components/PostTitle.astro'
 import PostFeaturedImage from '../components/PostFeaturedImage.astro'
 import Pagination from '../components/Pagination.astro'
-import BlogPostsLink from '../components/BlogPostsLink.astro'
-import BlogTagsLink from '../components/BlogTagsLink.astro'
 import styles from '../styles/blog.module.css'
 
 const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
@@ -69,17 +67,19 @@ const imageURLMap = await buildURLToImageMap(imageURLs)
 
       <h2 class="title">NEWS</h2>
       <section>
-        {posts.length === 0 ? (
+        <div id="newslist">
+          {posts.length === 0 ? (
             <NoContents contents={posts} />
           ) : posts.map(post => (
-            <div className={styles.post} key={post.Slug}>
-              <PostDate post={post} />
+            <article className={styles.post + " postlist"} key={post.Slug}>
               <PostTags post={post} />
-              <PostTitle post={post} />
-              <PostFeaturedImage post={post} urlMap={imageURLMap} />
-            </div>
+              <PostFeaturedImage post={post} urlMap={imageURLMap} class="thumbnail"/>
+              <PostTitle post={post} class="mt10"/>
+              <PostDate post={post} />
+            </article>
           ))}
-  
+        </div>
+
         <footer>
           <Pagination currentPage={1} numberOfPages={numberOfPages} />
         </footer>

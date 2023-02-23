@@ -120,6 +120,10 @@ overflow-x: hidden;
   padding: 0 5%;
 }
 
+.col2 {
+  display: flex;
+  align-items: center;
+}
 
 figure {
   margin: 0;
@@ -240,5 +244,73 @@ table {
     border: 1px solid #e4e4e4;
     padding: 0.5rem 1rem;
     line-height: 1.2rem;
+  }
+}
+
+/*-------------------------------------------- 
+margin
+--------------------------------------------*/
+$margin_list: (
+	0: (pc: 0, sp: 0),
+	10: (pc: 10px, sp: 1vw),
+	20: (pc: 20px, sp: 2vw),
+	30: (pc: 30px, sp: 3vw),
+	40: (pc: 40px, sp: 4vw),
+	60: (pc: 60px, sp: 6vw),
+	80: (pc: 80px, sp: 8vw),
+	100: (pc: 100px, sp: 10vw),
+);
+
+@each $class_name, $property in $margin_list{
+	.mt#{$class_name} {
+    margin-top: map-get($property,pc) !important;
+    @include sp {
+      margin-top: map-get($property,sp) !important;
+    }
+	}
+	.mb#{$class_name} {
+    margin-bottom: map-get($property,pc) !important;
+    @include sp {
+      margin-bottom: map-get($property,sp) !important;
+    }
+	}
+	.pt#{$class_name} {
+    padding-top: map-get($property,pc) !important;
+    @include sp {
+      padding-top: map-get($property,sp) !important;
+    }
+	}
+	.pb#{$class_name} {
+    padding-bottom: map-get($property,pc) !important;
+    @include sp {
+      padding-bottom: map-get($property,sp) !important;
+    }
+	}
+}
+
+/* 記事一覧 */
+#newslist {
+  display: flex;
+  flex-wrap: wrap;
+}
+.postlist {
+  position: relative;
+  width: calc((100% - 40px) / 3);
+  background: var(--sub);
+  padding: 10px;
+  .post-tags {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  .post-featured-image {
+    width: 100%;
+    padding: 0;
+  }
+  .post-title{
+    color: var(--main);
+  }
+  .post-date  {
+    margin-top: 10px;
   }
 }
