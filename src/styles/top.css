@@ -21,7 +21,11 @@
     line-height: 2rem;
   }
 }*/
-.content_title {
+main {
+  width: 100%;
+}
+
+.title {
   background: none;
   text-align: center;
   color: var(--main);
@@ -31,11 +35,11 @@
   font-family: "Playfair Display", serif;
 }
 @media screen and (max-width: 640px) {
-  .content_title {
+  .title {
     margin: 8vw 0 6vw;
   }
 }
-.content_title-blog {
+.title-blog {
   padding: 4px 0;
   font-size: 20px;
 }

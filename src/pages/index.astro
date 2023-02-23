@@ -1,6 +1,37 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import '../styles/top.css';
+
+import { NUMBER_OF_POSTS_PER_PAGE } from '../server-constants.ts'
+import {
+  getPosts,
+  getRankedPosts,
+  getAllTags,
+  getNumberOfPages,
+} from '../lib/notion/client.ts'
+import {
+  buildPostFeaturedImageURLs,
+  buildURLToImageMap,
+} from '../lib/blog-helpers.ts'
+import NoContents from '../components/NoContents.astro'
+import PostDate from '../components/PostDate.astro'
+import PostTags from '../components/PostTags.astro'
+import PostTitle from '../components/PostTitle.astro'
+import PostFeaturedImage from '../components/PostFeaturedImage.astro'
+import Pagination from '../components/Pagination.astro'
+import BlogPostsLink from '../components/BlogPostsLink.astro'
+import BlogTagsLink from '../components/BlogTagsLink.astro'
+import styles from '../styles/blog.module.css'
+
+const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
+  getPosts(NUMBER_OF_POSTS_PER_PAGE),
+  getRankedPosts(),
+  getAllTags(),
+  getNumberOfPages(),
+])
+
+const imageURLs = buildPostFeaturedImageURLs(posts).filter(url => url)
+const imageURLMap = await buildURLToImageMap(imageURLs)
 ---
 
 <Layout>
@@ -10,7 +41,7 @@ import '../styles/top.css';
         <div class="mv_chara"></div>
       </div>
 
-      <h2 class="content_title content_title-info">LINK</h2>
+      <h2 class="title">LINK</h2>
       <div class="sec_profile">
         <ul class="profile_list">
           <li>
@@ -35,6 +66,24 @@ import '../styles/top.css';
           </li>
         </ul>
       </div>
+
+      <h2 class="title">NEWS</h2>
+      <section>
+        {posts.length === 0 ? (
+            <NoContents contents={posts} />
+          ) : posts.map(post => (
+            <div className={styles.post} key={post.Slug}>
+              <PostDate post={post} />
+              <PostTags post={post} />
+              <PostTitle post={post} />
+              <PostFeaturedImage post={post} urlMap={imageURLMap} />
+            </div>
+          ))}
+  
+        <footer>
+          <Pagination currentPage={1} numberOfPages={numberOfPages} />
+        </footer>
+      </section>
       
     </main>
   </div>
