@@ -39,7 +39,7 @@ const { prevPost, nextPost } = Astro.props
     }
   </div>
   <div>
-    <a href={getNavLink('/')} class="text">↑Top</a>
+    <a href={getNavLink('/')} class="text">↑ TOP</a>
   </div>
 </div>
 
@@ -56,17 +56,21 @@ const { prevPost, nextPost } = Astro.props
         font-size: 0.95rem;
         &.text {
           margin-top: 1rem;
-          padding: 0.5rem;
+          padding: 0.4rem 1.2rem;
           color: inherit;
           font-size: 1rem;
-          text-decoration: underline;
           font-weight: 500;
+          background: #2d2d2d;
+          width: fit-content;
+          margin: 1.2rem auto 0;
+          color: #fff;
+          border-radius: 999px;
         }
         &.colored {
           padding: 1rem;
           border-radius: var(--radius);
           color: var(--fg);
-          background: #f7f7f7;
+          background: #f8f8f8;
           > div:first-child {
             width: auto;
             text-align: left;

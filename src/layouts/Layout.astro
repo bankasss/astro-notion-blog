@@ -169,8 +169,14 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     padding: var(--asidePaddingTop) 20px 20px;
     background-color: var(--aside-bg);
   }
+  @media (min-width: 639px) {
+    aside {
+      border-right: solid 1px #dbdcdd;
+    }
+  }
   @media (max-width: 640px) {
     aside {
+      border-top: solid 1px #dbdcdd;
       order: 2;
       width: 100%;
       padding: 40px 20px 20px;
@@ -203,6 +209,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
       color: #333;
       a {
         display: block;
+        width: fit-content;
         color: inherit;
         &:hover {
           color: inherit;
@@ -262,8 +269,8 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     --gap-double: 2rem;
 
     --main: #ff8dbe;
-    --bg: #fff8fb;
-    --aside-bg: #fffdfd ;
+    --bg: #fff;
+    --aside-bg: #f8f8f8 ;
     --category-bg: rgba(255, 248, 251, 0);
     --fg: #333;
     --accents-1: #666;
@@ -409,7 +416,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     height: 1px;
     border: 0;
     margin: 0.3rem 0;
-    background-color: #333;
+    background-color: #dbdcdd;
   }
 
   code {
@@ -441,5 +448,22 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     border: 1px solid #e4e4e4;
     padding: 0.5rem 1rem;
     line-height: 1.2rem;
+  }
+
+  .col2 {
+    display: flex;
+    .post-tags {
+      margin-top: 0;
+    }
+  }
+
+  ::-webkit-scrollbar{
+   width: 10px;
+  }
+  ::-webkit-scrollbar-track{
+    background-color: #ebebeb;
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color: #dbdcdd;
   }
 </style>
