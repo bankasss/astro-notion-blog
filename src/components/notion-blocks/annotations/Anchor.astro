@@ -8,4 +8,17 @@ export interface Props {
 const { richText } = Astro.props
 ---
 
-{richText.Href ? <a href={richText.Href}><slot /></a> : <slot />}
+{
+  /* prettier-ignore */
+  richText.Href ? (
+    <a href={richText.Href}><slot /></a>
+  ) : (
+    <slot />
+  )
+}
+
+<style>
+  a {
+    text-decoration: underline;
+  }
+</style>

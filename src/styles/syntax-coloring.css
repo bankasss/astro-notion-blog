@@ -39,7 +39,7 @@
 }
 
 .token.prefix.deleted {
-  color: #DD4A68;
+  color: #dd4a68;
 }
 
 .token.atrule,
@@ -51,7 +51,7 @@
 
 .token.function,
 .language-autohotkey .token.tag {
-  color: #DD4A68;
+  color: #dd4a68;
 }
 
 .token.tag,

@@ -8,4 +8,18 @@ export interface Props {
 const { richText } = Astro.props
 ---
 
-{richText.Annotation.Code ? <code><slot /></code> : <slot />}
+{
+  /* prettier-ignore */
+  richText.Annotation.Code ? (
+    <code><slot /></code>
+  ) : (
+    <slot />
+  )
+}
+
+<style>
+  code {
+    color: #eb5757;
+    padding: 0.25rem;
+  }
+</style>
