@@ -43,10 +43,7 @@ if (database.Icon && database.Icon.Type === 'file') {
   }
 }
 
-const navItems = [
-  { label: 'Home', path: '/' },
-  { label: 'Blog', path: '/blog' },
-]
+const asidePaddingTop = coverImageURL ? '200px' : '60px'
 ---
 
 <!DOCTYPE html>
@@ -59,7 +56,6 @@ const navItems = [
     <title>{siteTitle}</title>
     <meta name="description" content={siteDescription} />
     <link rel="canonical" href={siteURL} />
-    <link rel="icon" href="../../public/favicon.ico" />
     <meta property="og:url" content={siteURL} />
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={siteDescription} />
@@ -145,54 +141,116 @@ const navItems = [
   </body>
 </html>
 
-<style>
-  .header {
-    display: block;
-    padding: 15px 0;
-    text-align: center;
-  }
-  .header h1 {
-    padding: 0.5rem 0;
-    font-weight: 400;
-    color: #000;
-  }
-  .header h1 a {
-    color: inherit;
-  }
-  .header ul {
-    list-style: none;
-    margin: inherit;
-    padding: 0.5rem 0;
-    font-size: 1.1rem;
+<style define:vars={{ asidePaddingTop }}>
+  .container {
+    display: flex;
+    min-height: 100vh;
   }
   @media (max-width: 640px) {
-    .header ul {
-      font-size: 1rem;
+    .container {
+      display: block;
     }
   }
-  .header ul li {
-    display: inline-block;
-    padding: 0 15px;
+
+  main {
+    flex: 1;
+    order: 2;
+    justify-content: space-between;
   }
-  .header ul li :global(a.active) {
-    color: var(--accents-3);
+  @media (max-width: 640px) {
+    main {
+      order: 1;
+    }
   }
 
-  .container {
+  aside {
+    order: 1;
+    width: 300px;
+    padding: var(--asidePaddingTop) 20px 20px;
+    background-color: #f4f4f4;
+  }
+  @media (max-width: 640px) {
+    aside {
+      order: 2;
+      width: 100%;
+      padding: 40px 20px 20px;
+    }
+  }
+
+  div.cover {
+  }
+  div.cover img {
+    display: block;
     width: 100%;
-    padding: 0 5%;
+    height: 20vh;
+    object-fit: cover;
+    object-position: center 60%;
   }
 
-  .footer {
-    margin: 40px 0 10px;
+  div.content {
+    padding: 20px 40px;
+  }
+  @media (max-width: 640px) {
+    div.content {
+      padding: 0 18px;
+    }
+  }
+
+  main header {
+    padding: 20px 0 20px;
+  }
+  main header h1 {
+    font-weight: 700;
+    color: #333;
+  }
+  main header h1 a {
+    display: block;
+    color: inherit;
+  }
+  main header h1 a:hover {
+    color: inherit;
+  }
+  main header h1 a span,
+  main header h1 a img {
+    display: inline-block;
+    font-size: 1.1em;
+  }
+  main header h1 a span {
+    margin-right: 0.3em;
+    margin-left: -0.1rem;
+  }
+  main header h1 a img {
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 0.2em;
+    margin-left: -0.3rem;
+    vertical-align: sub;
+  }
+  main header h1 a img.custom-icon {
+    border-radius: var(--radius);
+  }
+
+  main header div.description {
+    padding: 0.3rem 0 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  main footer {
+    margin: 30px 0 10px;
     text-align: center;
     font-size: 0.75rem;
   }
-  .footer span {
+  @media (max-width: 640px) {
+    main footer {
+      margin: 0 auto 30px;
+    }
+  }
+  main footer span {
     color: #777;
   }
-  .footer span a {
+  main footer a {
     color: inherit;
+    text-decoration: underline;
   }
 </style>
 
@@ -205,18 +263,19 @@ const navItems = [
 
     --bg: #fff;
     --fg: #333;
-    --accents-1: #ff7e33;
-    --accents-2: #f26000;
+    --accents-1: #666;
+    --accents-2: #666;
     --accents-3: #666;
     --geist-foreground: #000;
     --geist-success: #690;
 
     --radius: 4px;
 
-    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    --font-mono: SFMono-Regular, Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+      'Helvetica Neue', sans-serif;
+    --font-mono: SFMono-Regular, Menlo, Consolas, 'PT Mono', 'Liberation Mono',
+      Courier, monospace;
   }
 
   * {
@@ -235,12 +294,10 @@ const navItems = [
     min-height: 100vh;
     background: var(--bg);
     color: var(--fg);
-    font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Segoe UI,
-      Hiragino Kaku Gothic ProN, Hiragino Sans, ヒラギノ角ゴ ProN W3, Arial,
-      メイリオ, Meiryo, sans-serif;
-    /*-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    */
+    font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Helvetica, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN',
+      'Hiragino Sans GB', メイリオ, Meiryo, 'Apple Color Emoji', Arial,
+      sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
 
     /*background-image: radial-gradient(#ddd 1px, transparent 1px),
       radial-gradient(#ddd 1px, transparent 1px);*/
@@ -266,7 +323,7 @@ const navItems = [
     text-decoration: none;
   }
   a:hover {
-    color: var(--accents-2);
+    color: var(--accents-1);
   }
 
   mark {
@@ -329,7 +386,8 @@ const navItems = [
     font-size: 1rem;
     line-height: 1.8rem;
   }
-  ul, ol {
+  ul,
+  ol {
     margin: 0;
     padding-inline-start: 1.5rem;
   }
