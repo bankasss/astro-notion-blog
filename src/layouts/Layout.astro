@@ -167,7 +167,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     order: 1;
     width: 300px;
     padding: var(--asidePaddingTop) 20px 20px;
-    background-color: #f4f4f4;
+    background-color: var(--aside-bg);
   }
   @media (max-width: 640px) {
     aside {
@@ -261,8 +261,10 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     --gap: 1rem;
     --gap-double: 2rem;
 
-    --bg: #fff;
-    --aside-bg: #fff;
+    --main: #ff8dbe;
+    --bg: #fff8fb;
+    --aside-bg: #fffdfd ;
+    --category-bg: rgba(255, 248, 251, 0);
     --fg: #333;
     --accents-1: #666;
     --accents-2: #666;

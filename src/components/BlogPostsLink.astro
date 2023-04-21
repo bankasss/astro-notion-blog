@@ -47,7 +47,7 @@ const { heading, posts } = Astro.props
     h3 {
       margin: 0;
       padding-left: 0.4rem;
-      color: #777;
+      color: var(--main);
       font-size: 0.95rem;
     }
     ul {
@@ -67,7 +67,8 @@ const { heading, posts } = Astro.props
           white-space: nowrap;
           text-overflow: ellipsis;
           &:hover {
-            background-color: #ddd;
+            background-color: var(--main);
+            color: #ffffff;
           }
           span,
           img {
