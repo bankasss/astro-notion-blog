@@ -36,7 +36,7 @@ for (let i = startPage; i <= endPage; i++) {
   >
 </div>
 
-<style>
+<style lang="scss">
   .pagination {
     display: flex;
     width: 100%;
@@ -44,26 +44,26 @@ for (let i = startPage; i <= endPage; i++) {
     color: var(--fg);
     justify-content: center;
     align-items: center;
-  }
-  .pagination a {
-    display: block;
-    width: 2.4rem;
-    height: 3rem;
-    margin: 0 0.4rem;
-    border-radius: var(--radius);
-    background: #f4f4f4;
-    color: inherit;
-    font-size: 0.85rem;
-    text-align: center;
-    text-decoration: underline;
-    font-weight: 500;
-    line-height: 3rem;
-  }
-  .pagination a:hover:not(.inactive) {
-    background: #ddd;
-  }
-  .pagination a.inactive {
-    color: #999;
-    text-decoration: none;
+    a {
+      display: block;
+      width: 2.4rem;
+      height: 3rem;
+      margin: 0 0.4rem;
+      border-radius: var(--radius);
+      background: #f4f4f4;
+      color: inherit;
+      font-size: 0.85rem;
+      text-align: center;
+      text-decoration: underline;
+      font-weight: 500;
+      line-height: 3rem;
+      &:hover:not(.inactive) {
+        background: #ddd;
+      }
+      &.inactive {
+        color: #999;
+        text-decoration: none;
+      }
+    }
   }
 </style>

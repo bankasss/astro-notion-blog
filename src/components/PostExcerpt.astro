@@ -12,13 +12,13 @@ const { post } = Astro.props
   <p>{post.Excerpt ? post.Excerpt : ''}</p>
 </div>
 
-<style>
+<style lang="scss">
   .post-excerpt {
     padding: 0.2rem 0;
     font-size: 1rem;
+    p {
+      margin: 0;
+    }
   }
 
-  .post-excerpt p {
-    margin: 0;
-  }
 </style>

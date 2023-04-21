@@ -141,7 +141,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
   </body>
 </html>
 
-<style define:vars={{ asidePaddingTop }}>
+<style lang="scss" define:vars={{ asidePaddingTop }}>
   .container {
     display: flex;
     min-height: 100vh;
@@ -178,13 +178,13 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
   }
 
   div.cover {
-  }
-  div.cover img {
-    display: block;
-    width: 100%;
-    height: 20vh;
-    object-fit: cover;
-    object-position: center 60%;
+    img {
+      display: block;
+      width: 100%;
+      height: 20vh;
+      object-fit: cover;
+      object-position: center 60%;
+    }
   }
 
   div.content {
@@ -198,59 +198,59 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
 
   main header {
     padding: 20px 0 20px;
-  }
-  main header h1 {
-    font-weight: 700;
-    color: #333;
-  }
-  main header h1 a {
-    display: block;
-    color: inherit;
-  }
-  main header h1 a:hover {
-    color: inherit;
-  }
-  main header h1 a span,
-  main header h1 a img {
-    display: inline-block;
-    font-size: 1.1em;
-  }
-  main header h1 a span {
-    margin-right: 0.3em;
-    margin-left: -0.1rem;
-  }
-  main header h1 a img {
-    width: 1.2em;
-    height: 1.2em;
-    margin-right: 0.2em;
-    margin-left: -0.3rem;
-    vertical-align: sub;
-  }
-  main header h1 a img.custom-icon {
-    border-radius: var(--radius);
+    h1 {
+      font-weight: 700;
+      color: #333;
+      a {
+        display: block;
+        color: inherit;
+        &:hover {
+          color: inherit;
+        }
+        span,
+        img {
+          display: inline-block;
+          font-size: 1.1em;
+        }
+        span {
+          margin-right: 0.3em;
+          margin-left: -0.1rem;
+        }
+        img {
+          width: 1.2em;
+          height: 1.2em;
+          margin-right: 0.2em;
+          margin-left: -0.3rem;
+          vertical-align: sub;
+          &.custom-icon {
+            border-radius: var(--radius);
+          }
+        }
+      }
+    }
+    div.description {
+      padding: 0.3rem 0 0.6rem;
+      font-size: 0.95rem;
+    }
   }
 
-  main header div.description {
-    padding: 0.3rem 0 0.6rem;
-    font-size: 0.95rem;
-  }
 
   main footer {
     margin: 30px 0 10px;
     text-align: center;
     font-size: 0.75rem;
+    span {
+      color: #777;
+    }
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
   }
   @media (max-width: 640px) {
     main footer {
       margin: 0 auto 30px;
     }
-  }
-  main footer span {
-    color: #777;
-  }
-  main footer a {
-    color: inherit;
-    text-decoration: underline;
   }
 </style>
 
@@ -262,6 +262,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     --gap-double: 2rem;
 
     --bg: #fff;
+    --aside-bg: #fff;
     --fg: #333;
     --accents-1: #666;
     --accents-2: #666;
