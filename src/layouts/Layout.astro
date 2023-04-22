@@ -79,7 +79,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
         {
           coverImageURL && (
             <div class="cover">
-              <img src="../images/cover.png"{/*coverImageURL*/} />
+              <img src="/cover.png"{/*coverImageURL*/} />
             </div>
           )
         }
@@ -145,6 +145,13 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
   .container {
     display: flex;
     min-height: 100vh;
+    background: var(--bg);
+  }
+  @media (min-width: 641px) {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
   }
   @media (max-width: 640px) {
     .container {
@@ -238,7 +245,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
       }
     }
     div.description {
-      padding: 0.3rem 0 0.6rem;
+      padding: 0.6rem 0 0.6rem;
       font-size: 0.95rem;
     }
   }
@@ -311,7 +318,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
 
   body {
     min-height: 100vh;
-    background: var(--bg);
+    background: #acb3ba;
     color: var(--fg);
     font-family: 'M PLUS 1p', sans-serif;
     /*background-image: radial-gradient(#ddd 1px, transparent 1px),
@@ -324,6 +331,9 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     overflow-x: hidden;
 
     -webkit-font-smoothing: antialiased;
+    @media (max-width: 640px) {
+      background: var(--bg);
+    }
   }
 
   figure {
