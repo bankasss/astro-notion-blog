@@ -22,7 +22,7 @@ const { heading, tags } = Astro.props
         {tags.map((tag: SelectProperty) => (
           <li>
             <a href={getTagLink(tag.name)} class={`tag ${tag.color}`}>
-              # {tag.name}
+              #{tag.name}
             </a>
           </li>
         ))}
@@ -55,7 +55,7 @@ const { heading, tags } = Astro.props
         a {
           min-width: 0;
           border-radius: 3px;
-          //padding: 2px 6px;
+          padding: 2px 6px;
           line-height: 1.2;
           color: rgb(50, 48, 44);
           background: var(--category-bg);

@@ -79,7 +79,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
         {
           coverImageURL && (
             <div class="cover">
-              <img src={coverImageURL} />
+              <img src="../images/cover.png"{/*coverImageURL*/} />
             </div>
           )
         }
@@ -153,10 +153,9 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
   }
 
   main {
-    //flex: 1;
+    flex: 1;
     order: 2;
     justify-content: space-between;
-    width: 1200px;
   }
   @media (max-width: 640px) {
     main {
@@ -186,10 +185,11 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
   }
 
   div.cover {
+    height: 0.5rem;
     img {
       display: block;
       width: 100%;
-      height: 20vh;
+      height: 100%;
       object-fit: cover;
       object-position: center 60%;
     }
@@ -460,6 +460,12 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     .post-tags {
       margin-top: 0;
     }
+  }
+
+  .no-contents {
+    padding-left: 0.4rem;
+    margin-block-end: 1rem;
+    margin-top: 0.4rem;
   }
 
   ::-webkit-scrollbar{
