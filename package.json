@@ -1,6 +1,5 @@
 {
   "name": "astro-notion-blog",
-  "type": "module",
   "version": "0.4.0",
   "private": true,
   "scripts": {
