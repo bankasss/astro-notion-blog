@@ -1,11 +1,11 @@
-{
-  "builds": [
-    {
-      "src": "app.cjs",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    { "src": "/.*", "dest": "app.cjs" }
-  ]
-}
+//{
+//  "builds": [
+//    {
+//      "src": "app.cjs",
+//      "use": "@vercel/node"
+//    }
+//  ],
+//  "routes": [
+//    { "src": "/.*", "dest": "app.cjs" }
+//  ]
+//}
