@@ -1,5 +1,6 @@
 {
   "name": "astro-notion-blog",
+  "type": "module",
   "version": "0.4.0",
   "private": true,
   "scripts": {
@@ -30,10 +31,7 @@
     "node-fetch": "^3.3.0",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "safe-compare": "^1.1.4",
-    "sass": "^1.62.0",
-    "static-auth": "^2.1.2"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@nrwl/nx-cloud": "^15.0.2",
