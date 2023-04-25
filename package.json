@@ -31,7 +31,8 @@
     "node-fetch": "^3.3.0",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "static-auth": "^2.1.2"
   },
   "devDependencies": {
     "@nrwl/nx-cloud": "^15.0.2",
