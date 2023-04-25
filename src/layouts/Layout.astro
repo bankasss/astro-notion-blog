@@ -18,8 +18,8 @@ const database = await getDatabase()
 
 const siteTitle = title ? `${title} - ${database.Title}` : database.Title
 const siteDescription = description ? description : database.Description
-const siteURL = 'nikkinikki.vercel.app/'
-const siteOGImage = new URL(getStaticFilePath('/default-og-image.png'), Astro.site)
+const siteURL = 'https://nikkinikki.vercel.app/'
+const siteOGImage = 'https://nikkinikki.vercel.app/default-og-image.png'
 
 let coverImageURL: string
 if (database.Cover) {
