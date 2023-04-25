@@ -1,3 +1,6 @@
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
 const protect = require('static-auth');
 const safeCompare = require('safe-compare');
 
