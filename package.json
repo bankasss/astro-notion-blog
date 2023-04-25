@@ -48,7 +48,8 @@
     "cli-progress": "^3.11.2",
     "eslint": "^8.31.0",
     "eslint-plugin-astro": "^0.21.1",
-    "nx": "15.5.3"
+    "nx": "15.5.3",
+    "sass": "^1.62.0"
   },
   "nx": {
     "targets": {
