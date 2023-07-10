@@ -4,7 +4,6 @@ import CoverImageDownloader from './src/integrations/cover-image-downloader';
 import CustomIconDownloader from './src/integrations/custom-icon-downloader';
 import FeaturedImageDownloader from './src/integrations/featured-image-downloader';
 import PublicNotionCopier from './src/integrations/public-notion-copier';
-import vercel from "@astrojs/vercel/serverless";
 
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
@@ -36,7 +35,10 @@ const getSite = function () {
 export default defineConfig({
   site: getSite(),
   base: BASE_PATH,
-  integrations: [CoverImageDownloader(), CustomIconDownloader(), FeaturedImageDownloader(), PublicNotionCopier()],
-  output: "server",
-  adapter: vercel()
+  integrations: [
+    CoverImageDownloader(),
+    CustomIconDownloader(),
+    FeaturedImageDownloader(),
+    PublicNotionCopier(),
+  ],
 });

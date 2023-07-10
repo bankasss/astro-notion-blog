@@ -20,8 +20,6 @@ import BlogTagsLink from '../../../../../components/BlogTagsLink.astro'
 import styles from '../../../../../styles/blog.module.css'
 import '../../../../../styles/notion-color.css'
 
-export const prerender = true
-
 export async function getStaticPaths() {
   const allTags = await getAllTags()
 
@@ -70,6 +68,7 @@ const currentTag = posts[0].Tags.find((t) => t.name === tag)
       ) : (
         posts.map((post) => (
           <div class={styles.post} key={post.Slug}>
+<<<<<<< HEAD
             <div class="col2">
               <PostDate post={post} />
               <PostTags post={post} />
@@ -78,6 +77,14 @@ const currentTag = posts[0].Tags.find((t) => t.name === tag)
             {/*<PostFeaturedImage post={post} />
             <PostExcerpt post={post} />
             <ReadMoreLink post={post} />*/}
+=======
+            <PostDate post={post} />
+            <PostTags post={post} />
+            <PostTitle post={post} />
+            <PostFeaturedImage post={post} />
+            <PostExcerpt post={post} />
+            <ReadMoreLink post={post} />
+>>>>>>> rooot/main
           </div>
         ))
       )
