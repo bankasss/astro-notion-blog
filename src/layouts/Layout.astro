@@ -18,7 +18,7 @@ const database = await getDatabase()
 
 const siteTitle = title ? `${title} - ${database.Title}` : database.Title
 const siteDescription = description ? description : database.Description
-const siteURL = new URL(getNavLink(path), Astro.site).toString()
+const siteURL = "ttps://nikkinikki.vercel.app/"//new URL(getNavLink(path), Astro.site).toString()
 const siteOGImage = new URL(
   getStaticFilePath('/default-og-image.png'),
   Astro.site
@@ -63,7 +63,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={siteDescription} />
     <meta property="og:site_name" content={database.Title} />
-    <meta property="og:image" content={ogImage || siteOGImage} />
+    <meta property="og:image" content="https://nikkinikki.vercel.app/default-og-image.png" />
     <meta name="twitter:title" content={siteTitle} />
     <meta name="twitter:description" content={siteDescription} />
     <meta name="twitter:card" content="summary_large_image" />
