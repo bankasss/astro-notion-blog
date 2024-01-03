@@ -12,6 +12,12 @@
   }
 }
 
+[page-name="list"] {
+  background: #f8f8f8;
+  padding: 0.6rem;
+  border-radius: 6px;
+}
+
 .post {
   margin: 0 auto 1.2rem;
 }
