@@ -18,13 +18,13 @@ let title = post.Title
       <a href={getPostLink(post.Slug)}>
         {post.Icon && post.Icon.Type === 'emoji' ? (
           <>
-            <span>{post.Icon.Emoji}</span>
-            {title}
+            <span class="emoji">{post.Icon.Emoji}</span>
+            <span class="title">{title}</span>
           </>
         ) : post.Icon && post.Icon.Type === 'external' ? (
           <>
             <img src={post.Icon.Url} />
-            {title}
+            <span class="title">{title}</span>
           </>
         ) : (
           title
@@ -34,8 +34,8 @@ let title = post.Title
       <>
         {post.Icon && post.Icon.Type === 'emoji' ? (
           <>
-            <span>{post.Icon.Emoji}</span>
-            {title}
+            <span class="emoji">{post.Icon.Emoji}</span>
+            <span class="title">{title}</span>
           </>
         ) : post.Icon && post.Icon.Type === 'external' ? (
           <>
@@ -53,17 +53,40 @@ let title = post.Title
 <style lang="scss">
   .post-title {
     padding: 0.8rem 0;
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 1.75rem;
+    font-weight: 500;
     color: var(--fg);
+    display: flex;
+    align-items: center;
     a {
+      display: flex;
+      align-items: center;
       font-size: 1.6rem;
       color: inherit;
+      .emoji {
+        font-size: 1.1em;
+        background: #f8f8f8;
+        width: 15vw;
+        height: 15vw;
+        max-width: 60px;
+        max-height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+      }
+      .title {
+        font-size: 1.1rem;
+        flex: 1;
+      }
+    }
+    >.emoji {
+      font-size: 1.5rem;
     }
     span,
     img {
       display: inline-block;
-      //margin-right: 0.2em;
+      margin-right: 0.4em;
     }
     span {
       //font-size: 1.2em;
@@ -74,24 +97,11 @@ let title = post.Title
       vertical-align: sub;
     }
   }
-  .post-title span,
-  .post-title img {
-    display: inline-block;
-    margin-right: 0.2em;
-  }
-  .post-title span {
-    font-size: 1.2em;
-  }
-  .post-title img {
-    width: 1.3em;
-    height: 1.3em;
-    vertical-align: sub;
-  }
   @media (max-width: 640px) {
     .post-title {
-      font-size: 1.4rem;
+      font-size: 1.1rem;
       a {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
     }
   }

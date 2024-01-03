@@ -46,13 +46,14 @@ const { block, headings } = Astro.props
   .table-of-contents {
     background: #f8f8f8;
     border-radius: var(--radius);
-    padding: 0.4rem;
+    padding: 0.6rem 1.2rem;
     display: block;
     > p {
       line-height: 1;
-      padding: 0.8rem 1.5rem 0.6rem;
+      padding: 0.6rem 0 0.4rem;
       color: #847d89;
       margin: 0 0 0.4rem;
+      text-align: center;
     }
     > a {
       display: block;
@@ -63,10 +64,10 @@ const { block, headings } = Astro.props
         background: rgba(241, 241, 239, 1) !important;
       }
       &.indent-1 {
-        padding-left: 1.5rem;
+        padding-left: 0;
       }
       &.indent-2 {
-        padding-left: 3rem;
+        padding-left: 1.2rem;
       }
     }
   }
