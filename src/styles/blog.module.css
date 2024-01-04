@@ -2,9 +2,7 @@
   padding: 0 0 20px;
 }
 .main footer {
-  border-top: 1px solid #dbdcdd;
   margin: 0 auto;
-  padding: 40px 0 0;
 }
 @media (max-width: 640px) {
   .main footer {
@@ -16,6 +14,9 @@
   background: #f8f8f8;
   padding: 0.6rem;
   border-radius: 6px;
+}
+[page-name="list"]:hover {
+  background: rgb(241,241,239);
 }
 
 .post {

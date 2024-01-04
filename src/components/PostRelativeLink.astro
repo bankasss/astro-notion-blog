@@ -39,7 +39,7 @@ const { prevPost, nextPost } = Astro.props
     }
   </div>
   <div>
-    <a href="#header"{/*getNavLink('/')*/} class="text">↑ TOP</a>
+    <a href="#body"{/*getNavLink('/')*/} class="text">↑ TOP</a>
   </div>
 </div>
 
@@ -88,5 +88,6 @@ const { prevPost, nextPost } = Astro.props
   }
   .prev-post-title,.next-post-title {
     margin-top: 0.8rem;
+    transform: rotate(0.05deg);
   }
 </style>
