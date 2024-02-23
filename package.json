@@ -22,7 +22,10 @@
     "@astrojs/vercel": "^3.2.4",
     "@notionhq/client": "^2.2.4",
     "@supercharge/promise-pool": "^2.3.2",
+    "@types/react": "^18.2.58",
+    "@types/react-dom": "^18.2.19",
     "astro": "^2.0.10",
+    "astro-seo": "^0.8.2",
     "katex": "^0.16.4",
     "mermaid": "^9.3.0",
     "metascraper": "^5.33.4",
@@ -33,22 +36,25 @@
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.63.6"
+    "sass": "^1.63.6",
+    "satori": "^0.10.13",
+    "sharp": "^0.33.2"
   },
   "devDependencies": {
-    "@nrwl/nx-cloud": "^15.0.2",
+    "@nrwl/nx-cloud": "^16.0.4",
     "@types/js-base64": "^3.3.1",
     "@types/metascraper": "^5.14.1",
     "@types/metascraper-description": "^5.14.1",
     "@types/metascraper-image": "^5.14.0",
     "@types/metascraper-title": "^5.14.0",
     "@types/node-fetch": "^2.6.2",
+    "@types/sharp": "^0.32.0",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
     "cli-progress": "^3.11.2",
     "eslint": "^8.31.0",
     "eslint-plugin-astro": "^0.21.1",
-    "nx": "15.5.3"
+    "nx": "^15.9.7"
   },
   "nx": {
     "targets": {

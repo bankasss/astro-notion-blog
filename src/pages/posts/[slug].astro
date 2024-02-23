@@ -101,6 +101,14 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
   description={post.Excerpt}
   path={getPostLink(post.Slug)}
   ogImage={ogImage}
+  openGraph={{
+    basic: {
+      title: post.Title,
+      type: 'article',
+      image: new URL(`/og/${post.Slug}.png`, Astro.url.origin).toString(),
+    },
+    image: { alt: post.Title },
+  }}
 >
   <div slot="main" class={styles.main} page-name="">
     <div class={styles.post}>
@@ -108,7 +116,17 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
         <PostDate post={post} />
         <PostTags post={post} />
       </div>
-      <PostTitle post={post} enableLink={false} />
+      <!-- <PostTitle post={post} enableLink={false} /> -->
+      <h2>
+        <img
+          src={'/og/' + `${post.Slug}` + '.png'}
+          width="1200"
+          height="630"
+          alt=`${post.Title}`
+          loading="lazy"
+          class="ogImage"
+        />
+      </h2>
       <PostBody blocks={blocks} />
       <PostTags post={post} />
       <LikeButton post={post} />
@@ -131,3 +149,11 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
     <BlogTagsLink heading="Categories" tags={tags} />
   </div>
 </Layout>
+
+<style>
+  .ogImage {
+    max-width: 100%;
+    margin-top: 1rem;
+    height: fit-content;
+  }
+</style>

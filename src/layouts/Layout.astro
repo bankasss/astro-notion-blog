@@ -1,24 +1,45 @@
 ---
+import { SEO } from 'astro-seo';
 import { PUBLIC_GA_TRACKING_ID, ENABLE_LIGHTBOX } from '../server-constants.ts'
 import { getDatabase } from '../lib/notion/client.ts'
 import { getNavLink, getStaticFilePath, filePath } from '../lib/blog-helpers.ts'
 import '../styles/syntax-coloring.css'
 import GoogleAnalytics from '../components/GoogleAnalytics.astro'
+import SearchModal from '../components/SearchModal.astro'
+import SearchButton from '../components/SearchButton.astro'
 
 export interface Props {
   title: string
   description: string
   path: string
   ogImage: string
+	openGraph: OpenGraph
 }
 
-const { title = '', description = '', path = '/', ogImage = '' } = Astro.props
+export type OpenGraph = {
+  basic: {
+    title: string;
+    type: 'article' | 'website';
+    image: string;
+  };
+  image: {
+    alt: string;
+  };
+};
 
 const database = await getDatabase()
 
+const {
+  title = '',
+  description = '',
+  path = '/',
+  ogImage = '',
+  openGraph,
+} = Astro.props;
+
 const siteTitle = title ? `${title} - ${database.Title}` : database.Title
 const siteDescription = description ? description : database.Description
-const siteURL = "ttps://nikkinikki.vercel.app/"//new URL(getNavLink(path), Astro.site).toString()
+const siteURL = new URL(getNavLink(path), Astro.site).toString()
 const siteOGImage = new URL(
   getStaticFilePath('/default-og-image.png'),
   Astro.site
@@ -56,18 +77,21 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     <meta name="robots" content="max-image-preview:large" />
     <meta charset="UTF-8" />
     <meta name="generator" content={Astro.generator} />
-    <title>{siteTitle}</title>
-    <meta name="description" content={siteDescription} />
-    <link rel="canonical" href={siteURL} />
-    <meta property="og:url" content={siteURL} />
-    <meta property="og:title" content={siteTitle} />
-    <meta property="og:description" content={siteDescription} />
-    <meta property="og:site_name" content={database.Title} />
-    <meta property="og:image" content="https://nikkinikki.vercel.app/default-og-image.png?20240104" />
-    <meta name="twitter:title" content={siteTitle} />
-    <meta name="twitter:description" content={siteDescription} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://nikkinikki.vercel.app/default-og-image.png?20240104" />
+    <SEO
+      charset="UTF-8"
+      title={siteTitle}
+      description={siteDescription}
+      openGraph={openGraph || {
+        basic: {
+          title: `${siteTitle}`,
+          type: "website",
+          image: `${siteOGImage}`,
+        }
+      }}
+      twitter={{
+        card: 'summary_large_image',
+      }}
+    />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
@@ -75,6 +99,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
       crossorigin="anonymous"
     />
   </head>
+
   <body id="body">
     <GoogleAnalytics trackingId={PUBLIC_GA_TRACKING_ID} />
     <div class="container">
