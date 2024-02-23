@@ -27,7 +27,7 @@ import BlogTagsLink from '../../components/BlogTagsLink.astro'
 import LikeButton from '../../components/LikeButton.astro'
 import styles from '../../styles/blog.module.css'
 
-//export const prerender = true
+export const prerender = true
 
 export async function getStaticPaths() {
   const posts = await getAllPosts()
