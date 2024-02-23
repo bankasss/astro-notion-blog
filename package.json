@@ -38,7 +38,7 @@
     "react-dom": "^18.2.0",
     "sass": "^1.63.6",
     "satori": "^0.10.13",
-    "sharp": "^0.33.2"
+    "sharp": "^0.32.6"
   },
   "devDependencies": {
     "@nrwl/nx-cloud": "^16.0.4",
@@ -48,7 +48,6 @@
     "@types/metascraper-image": "^5.14.0",
     "@types/metascraper-title": "^5.14.0",
     "@types/node-fetch": "^2.6.2",
-    "@types/sharp": "^0.32.0",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
     "cli-progress": "^3.11.2",
