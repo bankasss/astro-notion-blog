@@ -22,6 +22,7 @@ export async function getOgImage(title: string) {
         flexWrap: 'nowrap',
         justifyContent: 'center',
         alignItems: 'center',
+
       }}
     >
       <div
@@ -29,7 +30,7 @@ export async function getOgImage(title: string) {
           display: 'flex',
           width: '1140px',
           height: '567px',
-          background: 'rgba(255,255,255,1.0)',
+          background: 'rgba(255,255,255,0.8)',
           borderRadius: '8px',
           flexWrap: 'wrap',
           justifyContent: 'center',
