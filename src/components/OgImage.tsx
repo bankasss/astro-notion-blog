@@ -97,7 +97,7 @@ export async function getOgImage(title: string) {
         {
           name: 'Noto Sans JP',
           data: fontData,
-          style: 'normal',
+          style: 'bold',
         },
       ],
     }
