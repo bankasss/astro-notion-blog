@@ -97,7 +97,7 @@ export async function getOgImage(title: string) {
         {
           name: 'Noto Sans JP',
           data: fontData,
-          style: 'bold',
+          style: 'normal',
         },
       ],
     }
@@ -107,7 +107,7 @@ export async function getOgImage(title: string) {
 }
 
 async function getFontData() {
-  const API = `https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap`;
+  const API = `https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap`;
 
   const css = await (
     await fetch(API, {
