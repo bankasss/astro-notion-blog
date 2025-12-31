@@ -12,12 +12,12 @@ export interface QueryDatabaseResponse {
 // Retrieve a database response
 // https://developers.notion.com/reference/retrieve-a-database
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface RetrieveDatabaseResponse extends DatabaseObject {}
+export type RetrieveDatabaseResponse = DatabaseObject
 
 // Retrieve a block response
 // https://developers.notion.com/reference/retrieve-a-block
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface RetrieveBlockResponse extends BlockObject {}
+export type RetrieveBlockResponse = BlockObject
 
 // Retrieve block children response
 // https://developers.notion.com/reference/get-block-children
@@ -461,6 +461,3 @@ interface Table {
 interface TableRow {
   cells: RichTextObject[][]
 }
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface UpdatePageResponse extends PageObject {}

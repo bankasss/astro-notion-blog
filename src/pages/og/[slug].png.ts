@@ -1,6 +1,5 @@
 import type { APIContext } from 'astro';
 import { getOgImage } from '../../components/OgImage';
-import type { RequestHandler } from '@sveltejs/kit'
 import { getAllPosts, getPostBySlug } from '../../lib/notion/client';
 
 export const prerender = true
