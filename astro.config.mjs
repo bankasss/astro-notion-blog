@@ -1,4 +1,4 @@
-import vercel from '@astrojs/vercel/serverless';
+import vercel from "@astrojs/vercel";
 import { defineConfig } from 'astro/config';
 import { CUSTOM_DOMAIN, BASE_PATH } from './src/server-constants';
 import CoverImageDownloader from './src/integrations/cover-image-downloader';
