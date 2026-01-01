@@ -1,95 +1,100 @@
 import satori from 'satori';
 import sharp from 'sharp';
 
-// サイト名
-const site = '日記です';
-const url = 'nikkinikki.vercel.app';
+const SITE_NAME = '日記です';
+const SITE_URL = 'nikkinikki.vercel.app';
+const X_ID = '@pankas_web';
 
-// ユーザー
-const user = 'ぱんかす';
-const x = '@pankas_web';
+export async function getOgImage(title: string): Promise<Buffer> {
+  const fontData = await getFontData();
 
-export async function getOgImage(title: string) {
-  const fontData = (await getFontData()) as ArrayBuffer;
   const svg = await satori(
-    <div
-      style={{
-        width: '1200px',
-        height: '630px',
-        backgroundColor: '#ffd5e7',
-        backgroundImage: 'linear-gradient(90deg, #cfedff 0%, #e8e2f3 50%, #ffd5e7 100%)',
-        display: 'flex',
-        flexWrap: 'nowrap',
-        justifyContent: 'center',
-        alignItems: 'center',
-
-      }}
-    >
-      <div
-        style={{
+    {
+      type: 'div',
+      props: {
+        style: {
+          width: '1200px',
+          height: '630px',
           display: 'flex',
-          width: '1140px',
-          height: '567px',
-          background: 'rgba(255,255,255,0.8)',
-          borderRadius: '8px',
-          flexWrap: 'wrap',
           justifyContent: 'center',
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            width: '90%',
-            height: '85%',
-            justifyContent: 'center',
-          }}
-        >
-          <div
-            style={{
-              fontSize: '60px',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundImage: 'linear-gradient(90deg, #b5e1ff 0%, #c7c3e9 50%, #fca6cc 100%)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              color: 'transparent',
-            }}
-          >
-            {title}
-          </div>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '960px',
-            paddingBottom: '4px',
-            height: '40px',
-          }}
-        >
-          <div         
-           style={{
-            fontSize: '1.75rem',
-            backgroundImage: 'linear-gradient(90deg, #b5e1ff 0%, #c7c3e9 50%, #fca6cc 100%)',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            color: 'transparent',
-          }}
-          >
-            {site + " | " + url + " | " + x}
-          </div>
+          alignItems: 'center',
+          background:
+            'linear-gradient(90deg, #cfedff 0%, #e8e2f3 50%, #ffd5e7 100%)',
+        },
+        children: [
+          {
+            type: 'div',
+            props: {
+              style: {
+                width: '1140px',
+                height: '567px',
+                background: 'rgba(255,255,255,0.85)',
+                borderRadius: '12px',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+              },
+              children: [
+                // ===== タイトル（上下・左右 中央）=====
+                {
+                  type: 'div',
+                  props: {
+                    style: {
+                      position: 'absolute',
+                      inset: 0,
+                      left: '0px',
+                      right: '0px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      padding: '0 32px',
+                      textAlign: 'center',
+                    },
+                    children: [
+                      {
+                        type: 'div',
+                        props: {
+                          style: {
+                            fontSize: '64px',
+                            fontWeight: 500,
+                            lineHeight: 1.35,
+                            textAlign: 'center',
+                            wordBreak: 'break-word',
+                            background:
+                              'linear-gradient(90deg, #b5e1ff 0%, #c7c3e9 50%, #fca6cc 100%)',
+                            backgroundClip: 'text',
+                            color: 'transparent',
+                          },
+                          children: title,
+                        },
+                      },
+                    ],
+                  },
+                },
 
-        </div>
-        <div
-          style={{
-            flexBasis: '54%',
-            marginRight: '5.5rem',
-            display: 'flex',
-          }}
-        ></div>
-      </div>
-    </div>,
+                // ===== 左下のユーザー情報 =====
+                {
+                  type: 'div',
+                  props: {
+                    style: {
+                      position: 'absolute',
+                      left: '48px',
+                      bottom: '32px',
+                      fontSize: '28px',
+                      background:
+                        'linear-gradient(90deg, #b5e1ff 0%, #c7c3e9 50%, #fca6cc 100%)',
+                      backgroundClip: 'text',
+                      color: 'transparent',
+                    },
+                    children: `${SITE_NAME} | ${SITE_URL} | ${X_ID}`,
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
     {
       width: 1200,
       height: 630,
@@ -97,33 +102,30 @@ export async function getOgImage(title: string) {
         {
           name: 'Noto Sans JP',
           data: fontData,
+          weight: 500,
           style: 'normal',
         },
       ],
     }
   );
 
-  return await sharp(Buffer.from(svg)).png().toBuffer();
+  return sharp(Buffer.from(svg)).png().toBuffer();
 }
 
-async function getFontData() {
-  const API = `https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap`;
-
-  const css = await (
-    await fetch(API, {
+async function getFontData(): Promise<ArrayBuffer> {
+  const css = await fetch(
+    'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap',
+    {
       headers: {
-        // Make sure it returns TTF.
-        'User-Agent':
-          'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; de-at) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1',
+        'User-Agent': 'Mozilla/5.0',
       },
-    })
-  ).text();
+    }
+  ).then((res) => res.text());
 
-  const resource = css.match(
-    /src: url\((.+)\) format\('(opentype|truetype)'\)/
-  );
+  const match = css.match(/src:\s*url\((https:\/\/[^)]+)\)/);
+  if (!match) {
+    throw new Error('Font URL not found');
+  }
 
-  if (!resource) return;
-
-  return await fetch(resource[1]).then((res) => res.arrayBuffer());
+  return fetch(match[1]).then((res) => res.arrayBuffer());
 }

@@ -1,20 +1,37 @@
-import type { APIContext } from 'astro';
+import type { APIRoute } from 'astro';
 import { getOgImage } from '../../components/OgImage';
 import { getAllPosts, getPostBySlug } from '../../lib/notion/client';
 
-export const prerender = true
+export const prerender = true;
 
+/**
+ * 静的生成する slug 一覧
+ */
 export async function getStaticPaths() {
   const posts = await getAllPosts();
+
   return posts.map((post) => ({
     params: { slug: post.Slug },
   }));
 }
 
-export async function get({ params }: APIContext) {
-  if (params.slug === undefined) return;
-  const post = await getPostBySlug(params.slug);
-  const body = await getOgImage(post?.Title ?? 'No title');
+/**
+ * PNG を返す API Route
+ */
+export const GET: APIRoute = async ({ params }) => {
+  const slug = params?.slug;
 
-  return { body, encoding: 'binary' };
-}
+  if (!slug) {
+    return new Response('Not Found', { status: 404 });
+  }
+
+  const post = await getPostBySlug(slug);
+  const png = await getOgImage(post?.Title ?? 'No title');
+
+  return new Response(png, {
+    headers: {
+      'Content-Type': 'image/png',
+      'Cache-Control': 'public, max-age=31536000, immutable',
+    },
+  });
+};
