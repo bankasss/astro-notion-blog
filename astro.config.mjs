@@ -1,3 +1,4 @@
+import vercel from '@astrojs/vercel/serverless'
 import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 import { CUSTOM_DOMAIN, BASE_PATH } from './src/server-constants';
@@ -40,6 +41,8 @@ const getSite = function () {
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'server',
+  adapter: vercel(),
   site: getSite(),
   base: BASE_PATH,
   integrations: [

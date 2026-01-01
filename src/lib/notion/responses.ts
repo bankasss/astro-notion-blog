@@ -29,6 +29,7 @@ export interface RetrieveBlockChildrenResponse {
   type: string
   block?: Record<string, never>
 }
+export interface UpdatePageResponse extends PageObject {}
 
 // common interfaces
 interface UserObject {
