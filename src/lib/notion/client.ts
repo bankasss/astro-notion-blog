@@ -270,9 +270,7 @@ export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
     }
   }
 
-  const allBlocks = results
-    .map((blockObject) => _buildBlock(blockObject))
-    .filter((block) => block && block.Type)
+  const allBlocks = results.map((blockObject) => _buildBlock(blockObject))
 
   for (let i = 0; i < allBlocks.length; i++) {
     const block = allBlocks[i]
